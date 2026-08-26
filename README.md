@@ -2,15 +2,34 @@
 
 基于 [aipack](https://github.com/luoguoxiong/aipack) 框架构建的 LLM 示例应用合集：Agent 编排、RAG、多 Agent 协作、TTS 语音合成、Office 文档操作，全部 TypeScript 实现、零运行时框架依赖（原生 http + SSE）。
 
+目录结构对齐源项目 [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps)（Python/Streamlit 版），按相同分类组织，迁移全景与进度见 [PLAN.md](./PLAN.md)。
+
 ## 应用一览
+
+### starter_ai_agents — 入门单 Agent
 
 | 应用 | 说明 | 亮点 |
 | ---- | ---- | ---- |
-| [ai_blog_to_podcast_agent](./apps/ai_blog_to_podcast_agent) | AI 博客转播客 | 网页抓取 → 内容改写 → Edge TTS 免费语音合成 |
-| [ai_office_agent](./apps/ai_office_agent) | AI 办公助手 | Tauri 桌面端 + Office 文档操作（Excel/Word/PPT）+ 文件工具 |
-| [ai_rag_database_routing](./apps/ai_rag_database_routing) | RAG 数据库路由 | 向量路由 → LLM 路由 → 网页搜索兜底，三级降级 |
-| [ai_teaching_agent_team](./apps/ai_teaching_agent_team) | 教学 Agent 团队 | 4-Agent 顺序接力协作 + React 前端 + Markdown 导出 |
-| [ai_travel_agent](./apps/ai_travel_agent) | AI 旅行助手 | Researcher + Planner 双 Agent + 联网搜索 + ICS 日历导出 |
+| [ai_travel_agent](./starter_ai_agents/ai_travel_agent) | AI 旅行助手 | Researcher + Planner 双 Agent + 联网搜索 + ICS 日历导出 |
+| [ai_blog_to_podcast_agent](./starter_ai_agents/ai_blog_to_podcast_agent) | AI 博客转播客 | 网页抓取 → 内容改写 → Edge TTS 免费语音合成 |
+
+### advanced_ai_agents — 高级多 Agent
+
+| 应用 | 说明 | 亮点 |
+| ---- | ---- | ---- |
+| [ai_teaching_agent_team](./advanced_ai_agents/multi_agent_apps/ai_teaching_agent_team) | 教学 Agent 团队 | 4-Agent 顺序接力协作 + React 前端 + Markdown 导出 |
+
+### advanced_llm_apps — 高级 LLM 应用
+
+| 应用 | 说明 | 亮点 |
+| ---- | ---- | ---- |
+| [ai_office_agent](./advanced_llm_apps/ai_office_agent) | AI 办公助手 | Tauri 桌面端 + Office 文档操作（Excel/Word/PPT）+ 文件工具 |
+
+### rag_tutorials — RAG 教程
+
+| 应用 | 说明 | 亮点 |
+| ---- | ---- | ---- |
+| [ai_rag_database_routing](./rag_tutorials/ai_rag_database_routing) | RAG 数据库路由 | 向量路由 → LLM 路由 → 网页搜索兜底，三级降级 |
 
 ## 快速开始
 
@@ -21,7 +40,7 @@
 pnpm install
 
 # 2. 配置 API Key（进入任意 app 目录）
-cd apps/ai_travel_agent
+cd starter_ai_agents/ai_travel_agent
 cp .env.example .env
 # 编辑 .env，至少配置一个 LLM API Key（默认 DeepSeek）
 

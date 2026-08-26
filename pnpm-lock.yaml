@@ -8,64 +8,7 @@ importers:
 
   .: {}
 
-  apps/ai_blog_to_podcast_agent:
-    dependencies:
-      '@aipack-ai/agent':
-        specifier: ^0.0.2
-        version: 0.0.2
-      ws:
-        specifier: ^8.18.0
-        version: 8.21.3
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.0
-        version: 20.19.43
-      '@types/ws':
-        specifier: ^8.5.13
-        version: 8.18.1
-      tsx:
-        specifier: ^4.16.0
-        version: 4.23.12
-      typescript:
-        specifier: ^5.5.0
-        version: 5.9.3
-
-  apps/ai_office_agent:
-    dependencies:
-      '@aipack-ai/agent':
-        specifier: ^0.0.2
-        version: 0.0.2
-    devDependencies:
-      '@tauri-apps/cli':
-        specifier: ^2
-        version: 2.11.4
-      '@types/node':
-        specifier: ^20.12.0
-        version: 20.19.43
-      tsx:
-        specifier: ^4.16.0
-        version: 4.23.12
-      typescript:
-        specifier: ^5.5.0
-        version: 5.9.3
-
-  apps/ai_rag_database_routing:
-    dependencies:
-      '@aipack-ai/agent':
-        specifier: ^0.0.2
-        version: 0.0.2
-    devDependencies:
-      '@types/node':
-        specifier: ^20.12.0
-        version: 20.19.43
-      tsx:
-        specifier: ^4.16.0
-        version: 4.23.12
-      typescript:
-        specifier: ^5.5.0
-        version: 5.9.3
-
-  apps/ai_teaching_agent_team:
+  advanced_ai_agents/multi_agent_apps/ai_teaching_agent_team:
     dependencies:
       '@aipack-ai/agent':
         specifier: ^0.0.2
@@ -105,7 +48,64 @@ importers:
         specifier: ^6.4.3
         version: 6.4.3(@types/node@20.19.43)(tsx@4.23.12)
 
-  apps/ai_travel_agent:
+  advanced_llm_apps/ai_office_agent:
+    dependencies:
+      '@aipack-ai/agent':
+        specifier: ^0.0.2
+        version: 0.0.2
+    devDependencies:
+      '@tauri-apps/cli':
+        specifier: ^2
+        version: 2.11.4
+      '@types/node':
+        specifier: ^20.12.0
+        version: 20.19.43
+      tsx:
+        specifier: ^4.16.0
+        version: 4.23.12
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+
+  rag_tutorials/ai_rag_database_routing:
+    dependencies:
+      '@aipack-ai/agent':
+        specifier: ^0.0.2
+        version: 0.0.2
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.0
+        version: 20.19.43
+      tsx:
+        specifier: ^4.16.0
+        version: 4.23.12
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+
+  starter_ai_agents/ai_blog_to_podcast_agent:
+    dependencies:
+      '@aipack-ai/agent':
+        specifier: ^0.0.2
+        version: 0.0.2
+      ws:
+        specifier: ^8.18.0
+        version: 8.21.3
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.0
+        version: 20.19.43
+      '@types/ws':
+        specifier: ^8.5.13
+        version: 8.18.1
+      tsx:
+        specifier: ^4.16.0
+        version: 4.23.12
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+
+  starter_ai_agents/ai_travel_agent:
     dependencies:
       '@aipack-ai/agent':
         specifier: ^0.0.2

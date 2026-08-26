@@ -1,5 +1,17 @@
+# 目录结构对齐 awesome-llm-apps 分类（无 package.json 的目录会被 pnpm 自动忽略）
 packages:
-  - apps/*
+  # 一级分类
+  - starter_ai_agents/*
+  - advanced_llm_apps/*
+  - advanced_llm_apps/*/* # chat_with_X_tutorials 等二级分类
+  - rag_tutorials/*
+  - mcp_ai_agents/*
+  - voice_ai_agents/*
+  - generative_ui_agents/*
+  - always_on_agents/*
+  # 二级分类
+  - advanced_ai_agents/single_agent_apps/*
+  - advanced_ai_agents/multi_agent_apps/*
 
 onlyBuiltDependencies:
   - esbuild
