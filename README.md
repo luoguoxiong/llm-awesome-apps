@@ -18,6 +18,7 @@
 | [ai_finance_agent](./starter_ai_agents/ai_finance_agent) | 金融分析助手 | 多轮对话 + 实时行情/历史统计/财经搜索（Yahoo→腾讯→Stooq 四层降级） |
 | [ai_data_analysis_agent](./starter_ai_agents/ai_data_analysis_agent) | 数据分析助手 | CSV/Excel 上传 + 自然语言查询 + 结构化聚合 + ECharts 可视化 |
 | [ai_research_agent](./starter_ai_agents/ai_research_agent) | 深度研究助手 | 三阶段研究循环 + Web/HN/深读多源收集 + 事实实时推送 + Markdown 报告下载 |
+| [ai_insurance_advisor_agent](./starter_ai_agents/ai_insurance_advisor_agent) | 保险保障顾问 | 客户资料表单 → 本地确定性保额计算（免 Key 即时）+ Agent 检索定期寿险产品流式报告 |
 
 ### advanced_ai_agents — 高级多 Agent
 
