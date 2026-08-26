@@ -13,6 +13,7 @@
 | [ai_travel_agent](./starter_ai_agents/ai_travel_agent) | AI 旅行助手 | Researcher + Planner 双 Agent + 联网搜索 + ICS 日历导出 |
 | [ai_blog_to_podcast_agent](./starter_ai_agents/ai_blog_to_podcast_agent) | AI 博客转播客 | 网页抓取 → 内容改写 → Edge TTS 免费语音合成 |
 | [ai_reasoning_agent](./starter_ai_agents/ai_reasoning_agent) | 推理模型对比 | 普通模型 vs 推理模型双栏并行流式对比 + 思考链展示 |
+| [ai_multimodal_agent](./starter_ai_agents/ai_multimodal_agent) | 多模态分析 | 图片/视频理解（浏览器抽帧）+ web 搜索 + 15 个多模态模型 |
 
 ### advanced_ai_agents — 高级多 Agent
 
