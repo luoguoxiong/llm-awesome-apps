@@ -21,7 +21,9 @@
 | [ai_mixture_of_agents](./starter_ai_agents/ai_mixture_of_agents) | 混合专家（MoA） | N 个参考模型并行流式作答 + 聚合模型批判性综合，单模型失败不中断 |
 | [ai_breakup_recovery_agent](./starter_ai_agents/ai_breakup_recovery_agent) | 分手恢复陪伴团队 | 共情/告别信/七天计划/毒舌真相四 Agent 接力 + 聊天截图多模态分析 + Markdown 报告导出 |
 | [ai_insurance_advisor_agent](./starter_ai_agents/ai_insurance_advisor_agent) | 保险保障顾问 | 客户资料表单 → 本地确定性保额计算（免 Key 即时）+ Agent 检索定期寿险产品流式报告 |
+| [ai_medical_imaging_agent](./starter_ai_agents/ai_medical_imaging_agent) | 医学影像分析 | X 光/CT/MRI 读片 + 5 段式结构化诊断报告（关键发现/诊断评估/患者解释）+ 医学文献检索 |
 | [ai_startup_trends_agent](./starter_ai_agents/ai_startup_trends_agent) | 创业趋势分析助手 | 新闻收集 → 文章摘要 → 趋势与创业机会三阶段分析 + 摘要实时推送 + Markdown 报告下载 |
+| [ai_music_generator_agent](./starter_ai_agents/ai_music_generator_agent) | AI 音乐生成助手 | LLM 扩写详尽提示词 → ModelsLab 生成 MP3 + 内嵌播放/下载 + 多轮迭代调整 |
 
 ### advanced_ai_agents — 高级多 Agent
 

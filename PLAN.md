@@ -232,8 +232,8 @@
 - [x] 1.7 ai_mixture_of_agents（源 mixture_of_agents）
 - [x] 1.8 ai_breakup_recovery_agent（源同名，多 Agent 团队）
 - [x] 1.9 ai_insurance_advisor_agent（源 ai_life_insurance_advisor_agent）
-- [ ] 1.10 ai_medical_imaging_agent（源同名）
-- [ ] 1.11 ai_music_generator_agent（源同名）
+- [x] 1.10 ai_medical_imaging_agent（源同名）
+- [x] 1.11 ai_music_generator_agent（源同名）
 - [x] 1.12 ai_startup_trends_agent（源 ai_startup_trend_analysis_agent）
 - [ ] 后置评估：ai_meme_generator_agent_browseruse（browser-use 重依赖）
 
@@ -350,7 +350,7 @@ agent_skills ×7（SKILL.md 体系）、crash_course ×2（教程）、finetunin
 | 批次                 | 覆盖源应用数 | 新增目标 app  | 已完成 | 状态   |
 | -------------------- | ------------ | ------------- | ------ | ------ |
 | 0 已迁基线           | 4 + 原创 1   | —             | 5      | ✅     |
-| 1 Starter            | 14           | 12            | 9      | 进行中 |
+| 1 Starter            | 14           | 12            | 12     | ✅     |
 | 2 RAG                | 23           | 9             | 0      | 待启动 |
 | 3 高级 Agent         | 17           | 14            | 0      | 待启动 |
 | 4 Chat with X & 工具 | 13           | 11            | 0      | 待启动 |

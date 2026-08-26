@@ -370,6 +370,43 @@ importers:
         specifier: ^6.4.3
         version: 6.4.3(@types/node@20.19.43)(tsx@4.23.12)
 
+  starter_ai_agents/ai_music_generator_agent:
+    dependencies:
+      '@aipack-ai/agent':
+        specifier: ^0.0.2
+        version: 0.0.2
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.0
+        version: 20.19.43
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.31
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.7(@types/react@18.3.31)
+      '@vitejs/plugin-react':
+        specifier: ^4.3.3
+        version: 4.7.0(vite@6.4.3(@types/node@20.19.43)(tsx@4.23.12))
+      concurrently:
+        specifier: ^9.1.0
+        version: 9.2.4
+      tsx:
+        specifier: ^4.16.0
+        version: 4.23.12
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+      vite:
+        specifier: ^6.4.3
+        version: 6.4.3(@types/node@20.19.43)(tsx@4.23.12)
+
   starter_ai_agents/ai_reasoning_agent:
     dependencies:
       '@aipack-ai/agent':
