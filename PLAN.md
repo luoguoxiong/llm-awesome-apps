@@ -234,7 +234,7 @@
 - [x] 1.9 ai_insurance_advisor_agent（源 ai_life_insurance_advisor_agent）
 - [ ] 1.10 ai_medical_imaging_agent（源同名）
 - [ ] 1.11 ai_music_generator_agent（源同名）
-- [ ] 1.12 ai_startup_trends_agent（源 ai_startup_trend_analysis_agent）
+- [x] 1.12 ai_startup_trends_agent（源 ai_startup_trend_analysis_agent）
 - [ ] 后置评估：ai_meme_generator_agent_browseruse（browser-use 重依赖）
 
 ### 批次 2 — RAG 精选（9 个新 app，覆盖 23 个源）
