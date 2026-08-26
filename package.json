@@ -1,0 +1,16 @@
+{
+  "name": "llm-awesome-apps",
+  "version": "0.1.0",
+  "private": true,
+  "description": "基于 @aipack-ai 框架的 LLM 示例应用合集（Agent / RAG / 多 Agent 协作 / TTS / Office）",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r --if-present build",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm -r --if-present test"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

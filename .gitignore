@@ -1,0 +1,14 @@
+node_modules/
+.pnpm-store
+dist/
+.env
+.env.local
+*.log
+sessions
+
+# 部署运行时产物（pid/日志）
+apps/ai_teaching_agent_team/.deploy/
+
+# IDE
+.trae/
+.vscode/
