@@ -131,17 +131,28 @@ async function handlePodcast(
 ) {
   const body =
     (await readJson(req).catch(() => null)) as
-      | { url?: string; model?: { provider?: string; modelId?: string }; apiKey?: string }
+      | { url?: string; text?: string; model?: { provider?: string; modelId?: string }; apiKey?: string }
       | null;
-  if (!body || typeof body.url !== 'string' || !body.url.trim()) {
-    return json(res, 400, { error: '缺少 url 参数' });
+  if (!body) {
+    return json(res, 400, { error: '请求体无效' });
   }
-  const url = body.url.trim();
-  // 简单 URL 校验
-  try {
-    new URL(url);
-  } catch {
-    return json(res, 400, { error: 'url 格式无效' });
+
+  // 输入校验:url 与 text 二选一
+  const url = typeof body.url === 'string' ? body.url.trim() : '';
+  const text = typeof body.text === 'string' ? body.text.trim() : '';
+  if (!url && !text) {
+    return json(res, 400, { error: '请提供博客 URL 或正文文本(二选一)' });
+  }
+  if (url && text) {
+    return json(res, 400, { error: '博客 URL 与正文文本不能同时提供,请二选一' });
+  }
+  // URL 模式:简单格式校验
+  if (url) {
+    try {
+      new URL(url);
+    } catch {
+      return json(res, 400, { error: 'url 格式无效' });
+    }
   }
 
   // 校验并解析模型选择(缺省回退默认模型);未配置 Key 或未知模型 → 400
@@ -183,7 +194,12 @@ async function handlePodcast(
   };
 
   try {
-    await generatePodcast({ url, modelKey: choice.modelKey }, runtime, onProgress, ac.signal);
+    await generatePodcast(
+      url ? { url, modelKey: choice.modelKey } : { text, modelKey: choice.modelKey },
+      runtime,
+      onProgress,
+      ac.signal,
+    );
   } catch (err) {
     const msg = (err as Error).message === 'aborted' ? '客户端已断开' : (err as Error).message;
     if (msg !== '客户端已断开') {
