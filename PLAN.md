@@ -225,6 +225,7 @@
 
 - [x] 1.1 ai_reasoning_agent（源 ai_reasoning_agent）
 - [x] 1.2 ai_multimodal_agent（源 multimodal_ai_agent）
+- [x] 1.3 ai_web_scraping_agent（源 web_scraping_ai_agent）
 - [ ] 1.3 ai_web_scraping_agent（源 web_scraping_ai_agent）
 - [ ] 1.4 ai_finance_agent（源 xai_finance_agent）
 - [ ] 1.5 ai_data_analysis_agent（源 ai_data_analysis_agent + ai_data_visualisation_agent 合并，ECharts）
@@ -350,7 +351,7 @@ agent_skills ×7（SKILL.md 体系）、crash_course ×2（教程）、finetunin
 | 批次                 | 覆盖源应用数 | 新增目标 app  | 已完成 | 状态   |
 | -------------------- | ------------ | ------------- | ------ | ------ |
 | 0 已迁基线           | 4 + 原创 1   | —             | 5      | ✅     |
-| 1 Starter            | 14           | 12            | 2      | 进行中 |
+| 1 Starter            | 14           | 12            | 3      | 进行中 |
 | 2 RAG                | 23           | 9             | 0      | 待启动 |
 | 3 高级 Agent         | 17           | 14            | 0      | 待启动 |
 | 4 Chat with X & 工具 | 13           | 11            | 0      | 待启动 |
