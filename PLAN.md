@@ -223,7 +223,7 @@
 
 ### 批次 1 — Starter 单 Agent（12 个新 app）
 
-- [ ] 1.1 ai_reasoning_agent（源 ai_reasoning_agent）
+- [x] 1.1 ai_reasoning_agent（源 ai_reasoning_agent）
 - [ ] 1.2 ai_multimodal_agent（源 multimodal_ai_agent）
 - [ ] 1.3 ai_web_scraping_agent（源 web_scraping_ai_agent）
 - [ ] 1.4 ai_finance_agent（源 xai_finance_agent）
