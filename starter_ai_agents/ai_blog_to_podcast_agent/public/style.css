@@ -113,6 +113,42 @@ body {
 }
 
 /* ── Form ─────────────────────────────────────────── */
+.input-tabs {
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 4px;
+  background: var(--card-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.input-tab {
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+.input-tab:hover:not(:disabled) {
+  color: var(--text);
+}
+.input-tab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.input-tab--active {
+  background: var(--accent);
+  color: #fff;
+}
+.input-tab--active:hover:not(:disabled) {
+  color: #fff;
+}
 .form-row {
   display: flex;
   gap: 16px;
@@ -137,7 +173,8 @@ body {
   flex: 2 1 260px;
 }
 .field input,
-.field select {
+.field select,
+.field textarea {
   background: var(--card-2);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -149,10 +186,21 @@ body {
     box-shadow 0.15s;
 }
 .field input:focus,
-.field select:focus {
+.field select:focus,
+.field textarea:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 160px;
+  font-family: inherit;
+  line-height: 1.6;
+}
+.field textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
 }
 .field select {
   cursor: pointer;

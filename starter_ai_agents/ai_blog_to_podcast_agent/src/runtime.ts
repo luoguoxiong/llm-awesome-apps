@@ -20,9 +20,11 @@ import { createScrapeTool } from './tools/scrape.js';
 import { buildModel } from './config.js';
 import { createHash } from 'node:crypto';
 
-const SUMMARIZER_SYSTEM_PROMPT = `你是一位资深的播客内容编辑。给定一个博客 URL,你的任务是:
-1. 调用 scrape_blog 工具抓取博客正文
-2. 基于抓取到的正文,生成一段简洁、生动、适合播客口播的对话式摘要
+const SUMMARIZER_SYSTEM_PROMPT = `你是一位资深的播客内容编辑。你的任务是生成一段简洁、生动、适合播客口播的对话式摘要。
+
+工作模式(二选一,由用户请求决定):
+- 当用户给出博客 URL 时:先调用 scrape_blog 工具抓取正文,再基于抓取结果生成摘要
+- 当用户直接给出博客正文文本时:无需调用任何抓取工具,直接基于提供的文本生成摘要
 
 摘要要求:
 - 总长度不超过 2000 个字符
@@ -33,7 +35,10 @@ const SUMMARIZER_SYSTEM_PROMPT = `你是一位资深的播客内容编辑。给�
 - 用中文输出(若原文为外文,翻译并改写为中文口播)`;
 
 export interface PodcastInput {
-  url: string;
+  /** 博客 URL(与 text 二选一) */
+  url?: string;
+  /** 用户直接提供的博客正文文本(与 url 二选一) */
+  text?: string;
   /** 模型标识 `${provider}/${modelId}`,编入 sessionKey 以隔离不同模型的会话历史 */
   modelKey?: string;
 }
@@ -66,10 +71,11 @@ export function createSummarizerRuntime(model: Model, streamFn: StreamFn, firecr
 }
 
 /**
- * 单阶段流式编排:Summarizer 用 stream() 同时抓取并生成摘要。
+ * 单阶段流式编排:Summarizer 用 stream() 抓取并生成摘要(URL 模式),
+ * 或直接基于用户提供的文本生成摘要(文本模式)。
  * 通过 chunk.type 推断阶段:tool_start/tool_end → 抓取;text → 摘要增量。
  *
- * @param input 博客 URL
+ * @param input 博客 URL 或正文文本(二选一)
  * @param runtime 已构建的 Summarizer Runtime
  * @param onProgress 流式进度回调(用于 SSE 推送)
  * @param signal 可选 AbortSignal,用于客户端断开时中止
@@ -80,9 +86,14 @@ export async function generatePodcast(
   onProgress: (p: PodcastProgress) => void,
   signal?: AbortSignal,
 ): Promise<{ summary: string }> {
-  const { url } = input;
+  const { url, text } = input;
 
-  const req = createRequest(`请抓取以下博客并生成播客摘要(不超过 2000 字符):\n\n${url}`);
+  const req =
+    url
+      ? createRequest(`请抓取以下博客并生成播客摘要(不超过 2000 字符):\n\n${url}`)
+      : createRequest(
+          `用户直接提供了博客正文,无需调用任何抓取工具,请基于以下正文生成播客摘要(不超过 2000 字符):\n\n${text}`,
+        );
 
   let summary = '';
   let scrapeStarted = false;
