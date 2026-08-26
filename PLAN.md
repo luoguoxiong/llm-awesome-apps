@@ -226,8 +226,7 @@
 - [x] 1.1 ai_reasoning_agent（源 ai_reasoning_agent）
 - [x] 1.2 ai_multimodal_agent（源 multimodal_ai_agent）
 - [x] 1.3 ai_web_scraping_agent（源 web_scraping_ai_agent）
-- [ ] 1.3 ai_web_scraping_agent（源 web_scraping_ai_agent）
-- [ ] 1.4 ai_finance_agent（源 xai_finance_agent）
+- [x] 1.4 ai_finance_agent（源 xai_finance_agent）
 - [ ] 1.5 ai_data_analysis_agent（源 ai_data_analysis_agent + ai_data_visualisation_agent 合并，ECharts）
 - [ ] 1.6 ai_research_agent（源 openai_research_agent + multi_agent_researcher 合并）
 - [ ] 1.7 ai_mixture_of_agents（源 mixture_of_agents）

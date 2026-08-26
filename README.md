@@ -15,6 +15,7 @@
 | [ai_reasoning_agent](./starter_ai_agents/ai_reasoning_agent) | 推理模型对比 | 普通模型 vs 推理模型双栏并行流式对比 + 思考链展示 |
 | [ai_multimodal_agent](./starter_ai_agents/ai_multimodal_agent) | 多模态分析 | 图片/视频理解（浏览器抽帧）+ web 搜索 + 15 个多模态模型 |
 | [ai_web_scraping_agent](./starter_ai_agents/ai_web_scraping_agent) | 智能抓取 | 自然语言抽取指令 → 网页结构化 JSON（三层降级抓取 + 一键复制） |
+| [ai_finance_agent](./starter_ai_agents/ai_finance_agent) | 金融分析助手 | 多轮对话 + 实时行情/历史统计/财经搜索（Yahoo→腾讯→Stooq 四层降级） |
 
 ### advanced_ai_agents — 高级多 Agent
 
