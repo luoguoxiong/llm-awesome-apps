@@ -1,0 +1,45 @@
+{
+  "name": "ai-music-generator-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "基于 aipack 的 AI 音乐生成应用(LLM 润色提示词 + ModelsLab 生成 MP3,SSE 流式 + 内嵌播放器)",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n server,web -c blue,green \"tsx watch src/server.ts\" \"vite\"",
+    "dev:server": "tsx watch src/server.ts",
+    "dev:web": "vite",
+    "build": "vite build && tsc",
+    "serve": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "typecheck:web": "tsc --noEmit -p frontend/tsconfig.json"
+  },
+  "keywords": [
+    "ai",
+    "music",
+    "generation",
+    "modelslab",
+    "agent",
+    "aipack",
+    "llm",
+    "react"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@aipack-ai/agent": "^0.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "concurrently": "^9.1.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0",
+    "vite": "^6.4.3"
+  }
+}
