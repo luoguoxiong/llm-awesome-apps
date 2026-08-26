@@ -19,6 +19,7 @@
 | [ai_data_analysis_agent](./starter_ai_agents/ai_data_analysis_agent) | 数据分析助手 | CSV/Excel 上传 + 自然语言查询 + 结构化聚合 + ECharts 可视化 |
 | [ai_research_agent](./starter_ai_agents/ai_research_agent) | 深度研究助手 | 三阶段研究循环 + Web/HN/深读多源收集 + 事实实时推送 + Markdown 报告下载 |
 | [ai_mixture_of_agents](./starter_ai_agents/ai_mixture_of_agents) | 混合专家（MoA） | N 个参考模型并行流式作答 + 聚合模型批判性综合，单模型失败不中断 |
+| [ai_breakup_recovery_agent](./starter_ai_agents/ai_breakup_recovery_agent) | 分手恢复陪伴团队 | 共情/告别信/七天计划/毒舌真相四 Agent 接力 + 聊天截图多模态分析 + Markdown 报告导出 |
 | [ai_insurance_advisor_agent](./starter_ai_agents/ai_insurance_advisor_agent) | 保险保障顾问 | 客户资料表单 → 本地确定性保额计算（免 Key 即时）+ Agent 检索定期寿险产品流式报告 |
 
 ### advanced_ai_agents — 高级多 Agent
