@@ -42,6 +42,7 @@
 | 应用 | 说明 | 亮点 |
 | ---- | ---- | ---- |
 | [ai_rag_database_routing](./rag_tutorials/ai_rag_database_routing) | RAG 数据库路由 | 向量路由 → LLM 路由 → 网页搜索兜底，三级降级 |
+| [ai_hybrid_rag](./rag_tutorials/ai_hybrid_rag) | 混合检索 RAG | BM25 + TF-IDF 双通道 RRF 融合 + LLM 相关性重排 + 通用知识兜底 + 检索细节可视化 |
 
 ## 快速开始
 

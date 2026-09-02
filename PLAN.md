@@ -20,14 +20,11 @@
 ## 二、源项目全量盘点与去向总表
 
 > 状态说明：**迁移**=新建独立 app；**合并**=功能并入其他目标 app；**跳过**=不迁移（附理由）；**后置**=依赖预研或重依赖，放最后评估。
-> 已迁基线：`ai_travel_agent`、`ai_blog_to_podcast_agent`（starter）、`ai_teaching_agent_team`（advanced）、`ai_rag_database_routing`（rag）、`ai_office_agent`（原创）。
 
-### 2.1 starter_ai_agents（16 个，已迁 2，待处理 14）
+### 2.1 starter_ai_agents（14 个待处理）
 
 | 源应用                             | 去向                               | 说明                                |
 | ---------------------------------- | ---------------------------------- | ----------------------------------- |
-| ai_travel_agent                    | ✅ 已迁                            | —                                   |
-| ai_blog_to_podcast_agent           | ✅ 已迁                            | —                                   |
 | ai_reasoning_agent                 | 迁移 → ai_reasoning_agent          | 推理链展示，reasoning 模型          |
 | multimodal_ai_agent                | 迁移 → ai_multimodal_agent         | 视频分析 + 搜索                     |
 | web_scraping_ai_agent              | 迁移 → ai_web_scraping_agent       | 自然语言 → 结构化抓取               |
@@ -127,11 +124,10 @@
 | openai_remote_mcp_bridge         | 迁移 → ai_remote_mcp_bridge  | function calling ↔ 远程 MCP     |
 | ai_travel_planner_mcp_agent_team | 迁移 → ai_travel_planner_mcp | Airbnb/Google Maps MCP 数据行程 |
 
-### 2.7 rag_tutorials（24 个，已迁 1，合并为 9 个目标 app）
+### 2.7 rag_tutorials（23 个，合并为 9 个目标 app）
 
 | 源应用                                                                                                                               | 去向                                 | 说明                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ | ------------------------------------------------------- |
-| rag_database_routing                                                                                                                 | ✅ 已迁                              | —                                                       |
 | rag_chain                                                                                                                            | 迁移 → ai_rag_chain                  | 基础检索链（最小 RAG）                                  |
 | hybrid_search_rag + local_hybrid_search_rag                                                                                          | 迁移 → ai_hybrid_rag                 | 关键词 + 向量混合（云/本地合并）                        |
 | corrective_rag                                                                                                                       | 迁移 → ai_corrective_rag             | CRAG 自评纠错                                           |
@@ -215,32 +211,12 @@
 
 ## 四、迁移批次与执行清单
 
-> 推荐顺序：批次 1 → 2 → 3 → 4 → 5 → 6 → 7。总计新增约 **63 个目标 app + 2 个 spike**，覆盖 93 个源应用。
-
-### 批次 0 — 已完成 ✅（5 个）
-
-- [x] ai_travel_agent / ai_teaching_agent_team / ai_rag_database_routing / ai_blog_to_podcast_agent / ai_office_agent
-
-### 批次 1 — Starter 单 Agent（12 个新 app）
-
-- [x] 1.1 ai_reasoning_agent（源 ai_reasoning_agent）
-- [x] 1.2 ai_multimodal_agent（源 multimodal_ai_agent）
-- [x] 1.3 ai_web_scraping_agent（源 web_scraping_ai_agent）
-- [x] 1.4 ai_finance_agent（源 xai_finance_agent）
-- [x] 1.5 ai_data_analysis_agent（源 ai_data_analysis_agent + ai_data_visualisation_agent 合并，ECharts）
-- [x] 1.6 ai_research_agent（源 openai_research_agent + multi_agent_researcher 合并）
-- [x] 1.7 ai_mixture_of_agents（源 mixture_of_agents）
-- [x] 1.8 ai_breakup_recovery_agent（源同名，多 Agent 团队）
-- [x] 1.9 ai_insurance_advisor_agent（源 ai_life_insurance_advisor_agent）
-- [x] 1.10 ai_medical_imaging_agent（源同名）
-- [x] 1.11 ai_music_generator_agent（源同名）
-- [x] 1.12 ai_startup_trends_agent（源 ai_startup_trend_analysis_agent）
-- [ ] 后置评估：ai_meme_generator_agent_browseruse（browser-use 重依赖）
+> 推荐顺序：批次 2 → 3 → 4 → 5 → 6 → 7。总计新增约 **52 个目标 app + 2 个 spike**，覆盖剩余 71 个源应用。
 
 ### 批次 2 — RAG 精选（9 个新 app，覆盖 23 个源）
 
 - [ ] 2.1 ai_rag_chain（源 rag_chain）
-- [ ] 2.2 ai_hybrid_rag（源 hybrid_search_rag + local_hybrid_search_rag + ai_blog_search）
+- [x] 2.2 ai_hybrid_rag（源 hybrid_search_rag + local_hybrid_search_rag + ai_blog_search）
 - [ ] 2.3 ai_corrective_rag（源 corrective_rag）
 - [ ] 2.4 ai_autonomous_rag（源 autonomous_rag）
 - [ ] 2.5 ai_agentic_rag（源 agentic_rag_gpt5 + agentic_rag_with_reasoning + agentic_rag_math_agent + agentic_typed_rag_pydanticai）
@@ -347,16 +323,14 @@ agent_skills ×7（SKILL.md 体系）、crash_course ×2（教程）、finetunin
 
 ## 八、进度跟踪
 
-| 批次                 | 覆盖源应用数 | 新增目标 app  | 已完成 | 状态   |
-| -------------------- | ------------ | ------------- | ------ | ------ |
-| 0 已迁基线           | 4 + 原创 1   | —             | 5      | ✅     |
-| 1 Starter            | 14           | 12            | 12     | ✅     |
-| 2 RAG                | 23           | 9             | 0      | 待启动 |
-| 3 高级 Agent         | 17           | 14            | 0      | 待启动 |
-| 4 Chat with X & 工具 | 13           | 11            | 0      | 待启动 |
-| 5 Generative UI      | 6            | 6             | 0      | 待启动 |
-| 6 MCP                | 7            | 7 + spike     | 0      | 待预研 |
-| 7 Voice & Always-on  | 5            | 5 + spike     | 0      | 待预研 |
-| 合计                 | ~89 待处理   | ~64 + 2 spike | 5      | —      |
+| 批次                 | 覆盖源应用数 | 新增目标 app | 已完成 | 状态   |
+| -------------------- | ------------ | ------------ | ------ | ------ |
+| 2 RAG                | 23           | 9            | 0      | 待启动 |
+| 3 高级 Agent         | 17           | 14           | 0      | 待启动 |
+| 4 Chat with X & 工具 | 13           | 11           | 0      | 待启动 |
+| 5 Generative UI      | 6            | 6            | 0      | 待启动 |
+| 6 MCP                | 7            | 7 + spike    | 0      | 待预研 |
+| 7 Voice & Always-on  | 5            | 5 + spike    | 0      | 待预研 |
+| 合计                 | 71 待处理    | 52 + 2 spike | 0      | —      |
 
-> 后置评估项（5 个）：meme_generator、speech_trainer、self_evolving、chat_gmail、mcp_app_builder、insurance_claim_live（见各批次）。
+> 后置评估项（6 个）：meme_generator（browser-use 重依赖）、speech_trainer、self_evolving、chat_gmail、mcp_app_builder、insurance_claim_live（其余见各批次）。
