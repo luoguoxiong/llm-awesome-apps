@@ -4,6 +4,7 @@
 
 ## 特性
 
+- **二选一输入**:支持输入博客 URL(自动抓取正文)或直接粘贴长文本,两种模式互斥,文本模式跳过抓取阶段直接生成摘要
 - **单 Agent 编排**:Summarizer Runtime(带抓取工具)用 `stream()` 一把梭,通过 `ResultChunk.type` 区分抓取/摘要阶段
 - **抓取三层降级**(符合多层容错偏好):Firecrawl v2 `/scrape` → 原生 fetch + HTML 正文提取 → 兜底(让 LLM 基于已知处理)
 - **Edge TTS 免费语音合成**:微软神经语音,无需 API Key,WebSocket 直连 `speech.platform.bing.com`;连接失败重试 1 次,30s 超时;DRM token 基于 SHA256 动态生成(每 5 分钟轮换)
@@ -85,7 +86,10 @@ pnpm --filter ai-blog-to-podcast-agent build
 pnpm --filter ai-blog-to-podcast-agent serve
 ```
 
-打开浏览器访问 `http://localhost:3000`,输入博客 URL(可选语音与语速),点击「生成播客」。
+打开浏览器访问 `http://localhost:3000`,在顶部切换「博客 URL」或「长文本」输入模式(二选一),输入内容后点击「生成播客」。
+
+- **博客 URL 模式**:Summarizer 调用 `scrape_blog` 工具抓取正文,再生成摘要(两阶段:抓取 → 摘要)
+- **长文本模式**:直接基于粘贴的正文生成摘要,跳过抓取(单阶段:摘要)
 
 ## 工作原理
 
@@ -120,21 +124,28 @@ pnpm --filter ai-blog-to-podcast-agent serve
 
 ## API
 
-| 方法   | 路径           | 说明                                                        |
-| ------ | -------------- | ----------------------------------------------------------- |
-| `GET`  | `/`            | 单页 UI                                                     |
-| `GET`  | `/api/config`  | 当前模型、抓取后端、TTS 后端、语音列表与模型目录            |
-| `POST` | `/api/podcast` | SSE 流式生成摘要;body `{ url, model?, apiKey? }`            |
-| `POST` | `/api/tts`     | 生成 mp3 下载(Edge TTS 免费);body `{ text, voice?, rate? }` |
+| 方法   | 路径           | 说明                                                                |
+| ------ | -------------- | ------------------------------------------------------------------- |
+| `GET`  | `/`            | 单页 UI                                                             |
+| `GET`  | `/api/config`  | 当前模型、抓取后端、TTS 后端、语音列表与模型目录                    |
+| `POST` | `/api/podcast` | SSE 流式生成摘要;body `{ url \| text, model?, apiKey? }`(二选一)    |
+| `POST` | `/api/tts`     | 生成 mp3 下载(Edge TTS 免费);body `{ text, voice?, rate? }`        |
 
 ### SSE 事件序列(`/api/podcast`)
 
 ```
+# URL 模式(含抓取阶段)
 event: stage    data: {"stage":"scrape_start"}
 event: stage    data: {"stage":"scrape_done"}
 event: stage    data: {"stage":"summary_start"}
 event: delta    data: {"delta":"...摘要增量..."}
 event: done     data: {"summary":"...完整摘要..."}
+
+# 长文本模式(跳过抓取,直接摘要)
+event: stage    data: {"stage":"summary_start"}
+event: delta    data: {"delta":"...摘要增量..."}
+event: done     data: {"summary":"...完整摘要..."}
+
 event: error    data: {"message":"..."}   # 出错时
 ```
 

@@ -19,10 +19,18 @@
   <main class="container">
     <section class="card form-card">
       <h2>生成播客</h2>
+      <div class="input-tabs" role="tablist" aria-label="输入方式">
+        <button id="tabUrl" class="input-tab input-tab--active" role="tab" aria-selected="true" type="button">博客 URL</button>
+        <button id="tabText" class="input-tab" role="tab" aria-selected="false" type="button">长文本</button>
+      </div>
       <div class="form-row">
-        <label class="field field--grow">
+        <label id="urlField" class="field field--grow">
           <span>博客 URL</span>
           <input id="url" type="url" placeholder="https://example.com/blog/post" value="https://www.anthropic.com/news/claude-3-5-sonnet" />
+        </label>
+        <label id="textField" class="field field--grow hidden">
+          <span>博客正文(直接粘贴长文本,无需抓取)</span>
+          <textarea id="text" rows="8" placeholder="在此粘贴博客正文…&#10;无需提供 URL,系统将直接基于该文本生成播客摘要。"></textarea>
         </label>
         <div class="actions">
           <button id="generateBtn" class="btn btn--primary">生成播客</button>

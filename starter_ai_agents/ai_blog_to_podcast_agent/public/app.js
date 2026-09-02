@@ -7,6 +7,11 @@ const els = {
   status: $('status'),
   model: $('model'),
   url: $('url'),
+  text: $('text'),
+  tabUrl: $('tabUrl'),
+  tabText: $('tabText'),
+  urlField: $('urlField'),
+  textField: $('textField'),
   apiKey: $('apiKey'),
   apiKeyHint: $('apiKeyHint'),
   apiKeyToggle: $('apiKeyToggle'),
@@ -27,6 +32,9 @@ const els = {
   errorText: $('errorText'),
 };
 
+// 输入模式:url | text(二选一,决定提交字段与渲染的阶段数)
+let inputMode = 'url';
+
 // 语音与语速持久化(localStorage)
 const savedVoice = localStorage.getItem('blog_podcast_voice') || '';
 const savedRate = localStorage.getItem('blog_podcast_rate') || '+0%';
@@ -40,6 +48,20 @@ let statusInfo = null;
 let providerAvailable = new Map();
 let providerEnvVar = new Map();
 let currentAudioUrl = null;
+
+// ── 输入模式切换(URL / 长文本,二选一)──────────────────────────────
+function setInputMode(mode) {
+  inputMode = mode;
+  const isUrl = mode === 'url';
+  els.tabUrl.classList.toggle('input-tab--active', isUrl);
+  els.tabText.classList.toggle('input-tab--active', !isUrl);
+  els.tabUrl.setAttribute('aria-selected', String(isUrl));
+  els.tabText.setAttribute('aria-selected', String(!isUrl));
+  els.urlField.classList.toggle('hidden', !isUrl);
+  els.textField.classList.toggle('hidden', isUrl);
+}
+els.tabUrl.addEventListener('click', () => setInputMode('url'));
+els.tabText.addEventListener('click', () => setInputMode('text'));
 
 async function loadStatus() {
   try {
@@ -190,8 +212,8 @@ const STAGES = {
 
 function renderStages(activeStage) {
   els.stageList.innerHTML = '';
-  // 两个阶段:抓取 → 摘要
-  const order = ['scrape_start', 'summary_start'];
+  // 文本模式无抓取阶段,只渲染摘要阶段
+  const order = inputMode === 'text' ? ['summary_start'] : ['scrape_start', 'summary_start'];
   const activeIdx = order.indexOf(activeStage);
   for (let i = 0; i < order.length; i++) {
     const key = order[i];
@@ -213,8 +235,14 @@ function renderStages(activeStage) {
 // ── 生成播客(SSE 摘要 + TTS)───────────────────────────────────────
 els.generateBtn.addEventListener('click', async () => {
   const url = els.url.value.trim();
-  if (!url) {
+  const text = els.text.value.trim();
+  // 按当前输入模式校验(二选一)
+  if (inputMode === 'url' && !url) {
     showError('请输入博客 URL');
+    return;
+  }
+  if (inputMode === 'text' && !text) {
+    showError('请粘贴博客正文');
     return;
   }
 
@@ -234,7 +262,8 @@ els.generateBtn.addEventListener('click', async () => {
   els.errorBox.classList.add('hidden');
   els.progress.classList.remove('hidden');
   els.progressTitle.textContent = '准备中…';
-  renderStages('scrape_start');
+  // 文本模式直接进入摘要阶段(无抓取)
+  renderStages(inputMode === 'text' ? 'summary_start' : 'scrape_start');
   els.downloadBtn.disabled = true;
   els.copyBtn.disabled = true;
   // 清理上一轮音频 URL
@@ -247,10 +276,12 @@ els.generateBtn.addEventListener('click', async () => {
   let summary = '';
 
   try {
+    const payload =
+      inputMode === 'text' ? { text, model: choice, apiKey } : { url, model: choice, apiKey };
     const res = await fetch('/api/podcast', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url, model: choice, apiKey }),
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {
@@ -362,10 +393,14 @@ els.copyBtn.addEventListener('click', async () => {
 function setGenerating(on) {
   els.generateBtn.disabled = on;
   els.generateBtn.textContent = on ? '生成中…' : '生成播客';
-  // 生成执行期间禁止切换模型 / 改 API Key / 改语音,避免与进行中的请求不一致
+  // 生成执行期间禁止切换模型 / 改 API Key / 改语音 / 改输入,避免与进行中的请求不一致
   els.model.disabled = on;
   els.voice.disabled = on;
   els.rate.disabled = on;
+  els.url.disabled = on;
+  els.text.disabled = on;
+  els.tabUrl.disabled = on;
+  els.tabText.disabled = on;
   if (on) {
     els.apiKey.disabled = true;
   } else {
