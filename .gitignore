@@ -5,6 +5,7 @@ dist/
 .env.local
 *.log
 sessions
+.rag-store/
 
 # 部署运行时产物（pid/日志）
 apps/ai_teaching_agent_team/.deploy/

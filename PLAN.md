@@ -215,7 +215,7 @@
 
 ### 批次 2 — RAG 精选（9 个新 app，覆盖 23 个源）
 
-- [ ] 2.1 ai_rag_chain（源 rag_chain）
+- [x] 2.1 ai_rag_chain（源 rag_chain）
 - [x] 2.2 ai_hybrid_rag（源 hybrid_search_rag + local_hybrid_search_rag + ai_blog_search）
 - [ ] 2.3 ai_corrective_rag（源 corrective_rag）
 - [ ] 2.4 ai_autonomous_rag（源 autonomous_rag）
@@ -325,7 +325,7 @@ agent_skills ×7（SKILL.md 体系）、crash_course ×2（教程）、finetunin
 
 | 批次                 | 覆盖源应用数 | 新增目标 app | 已完成 | 状态   |
 | -------------------- | ------------ | ------------ | ------ | ------ |
-| 2 RAG                | 23           | 9            | 0      | 待启动 |
+| 2 RAG                | 23           | 9            | 2      | 进行中 |
 | 3 高级 Agent         | 17           | 14           | 0      | 待启动 |
 | 4 Chat with X & 工具 | 13           | 11           | 0      | 待启动 |
 | 5 Generative UI      | 6            | 6            | 0      | 待启动 |
