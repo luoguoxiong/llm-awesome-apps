@@ -213,6 +213,30 @@
 
 > 推荐顺序：批次 2 → 3 → 4 → 5 → 6 → 7。总计新增约 **52 个目标 app + 2 个 spike**，覆盖剩余 71 个源应用。
 
+### 批次 0 — 已完成 ✅（5 个）
+
+- [x] ai_travel_agent / ai_teaching_agent_team / ai_rag_database_routing / ai_blog_to_podcast_agent / ai_office_agent
+
+### 原创应用（非 awesome-llm-apps 迁移项）
+
+- [x] ai_trade_lead_agent（`foreign_trade_apps/`）：外贸获客 —— 产品关键词 → ImportYeti 找美国进口商 → 查供应商核验是否真在采购 → Google/LinkedIn 找官网联系人 → AI 客户分析 → AI 个性化开发信（五阶段 Runtime 流水线 + 结构化线索库，端口 3013）
+
+### 批次 1 — Starter 单 Agent（12 个新 app）
+
+- [x] 1.1 ai_reasoning_agent（源 ai_reasoning_agent）
+- [x] 1.2 ai_multimodal_agent（源 multimodal_ai_agent）
+- [x] 1.3 ai_web_scraping_agent（源 web_scraping_ai_agent）
+- [x] 1.4 ai_finance_agent（源 xai_finance_agent）
+- [x] 1.5 ai_data_analysis_agent（源 ai_data_analysis_agent + ai_data_visualisation_agent 合并，ECharts）
+- [x] 1.6 ai_research_agent（源 openai_research_agent + multi_agent_researcher 合并）
+- [x] 1.7 ai_mixture_of_agents（源 mixture_of_agents）
+- [x] 1.8 ai_breakup_recovery_agent（源同名，多 Agent 团队）
+- [x] 1.9 ai_insurance_advisor_agent（源 ai_life_insurance_advisor_agent）
+- [x] 1.10 ai_medical_imaging_agent（源同名）
+- [x] 1.11 ai_music_generator_agent（源同名）
+- [x] 1.12 ai_startup_trends_agent（源 ai_startup_trend_analysis_agent）
+- [ ] 后置评估：ai_meme_generator_agent_browseruse（browser-use 重依赖）
+
 ### 批次 2 — RAG 精选（9 个新 app，覆盖 23 个源）
 
 - [x] 2.1 ai_rag_chain（源 rag_chain）

@@ -1,6 +1,6 @@
 # llm-awesome-apps
 
-基于 [aipack](https://github.com/luoguoxiong/aipack) 框架构建的 LLM 示例应用合集：Agent 编排、RAG、多 Agent 协作、TTS 语音合成、Office 文档操作，全部 TypeScript 实现、零运行时框架依赖（原生 http + SSE）。
+基于 [aipack](https://github.com/luoguoxiong/aipack) 框架构建的 LLM 示例应用合集：Agent 编排、RAG、多 Agent 协作、TTS 语音合成、Office 文档操作、外贸获客，全部 TypeScript 实现、零运行时框架依赖（原生 http + SSE）。
 
 目录结构对齐源项目 [awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps)（Python/Streamlit 版），按相同分类组织，迁移全景与进度见 [PLAN.md](./PLAN.md)。
 
@@ -44,6 +44,12 @@
 | [ai_rag_database_routing](./rag_tutorials/ai_rag_database_routing) | RAG 数据库路由 | 向量路由 → LLM 路由 → 网页搜索兜底，三级降级 |
 | [ai_rag_chain](./rag_tutorials/ai_rag_chain) | 基础 RAG 检索链 | 文档上传（零依赖 PDF 提取）→ TF-IDF 相似检索 → 仅基于上下文流式问答 + 引用片段溯源 |
 | [ai_hybrid_rag](./rag_tutorials/ai_hybrid_rag) | 混合检索 RAG | BM25 + TF-IDF 双通道 RRF 融合 + LLM 相关性重排 + 通用知识兜底 + 检索细节可视化 |
+
+### foreign_trade_apps — 外贸获客(原创)
+
+| 应用 | 说明 | 亮点 |
+| ---- | ---- | ---- |
+| [ai_trade_lead_agent](./foreign_trade_apps/ai_trade_lead_agent) | AI 外贸获客助手 | 产品关键词 → ImportYeti 找美国进口商 → 查供应商核验是否真在采购 → Google/LinkedIn 找官网联系人 → AI 客户分析 → AI 个性化开发信 |
 
 ## 快速开始
 

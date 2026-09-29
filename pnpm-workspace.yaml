@@ -9,6 +9,8 @@ packages:
   - voice_ai_agents/*
   - generative_ui_agents/*
   - always_on_agents/*
+  # 原创分类:外贸获客
+  - foreign_trade_apps/*
   # 二级分类
   - advanced_ai_agents/single_agent_apps/*
   - advanced_ai_agents/multi_agent_apps/*
